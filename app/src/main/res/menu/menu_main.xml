@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/red"
+        android:orderInCategory="100"
+        android:icon="@drawable/jellyfish"
+        android:title="@string/red"/>
+    <item android:id="@+id/green"
+        android:orderInCategory="100"
+        android:icon="@drawable/koala"
+        android:title="@string/green"/>
+    <item android:id="@+id/blue"
+        android:orderInCategory="100"
+        android:icon="@drawable/penguins"
+        android:title="@string/blue"/>
+</menu>
