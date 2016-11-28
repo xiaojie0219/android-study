@@ -1,15 +1,10 @@
 package com.example.administrator.myapplication.Activity;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.example.administrator.myapplication.R;
+import com.example.administrator.myapplication.data.DBHelper;
 
 /**
  * Created by jay on 2016/11/17.
@@ -26,6 +21,8 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+
 /*
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

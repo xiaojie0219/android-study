@@ -12,7 +12,7 @@ import com.example.administrator.myapplication.R;
 /**
  * Created by jay on 2016/11/18.
  */
-public class FragmentHome extends Fragment implements OnClickListenner{
+public class FragmentHome extends Fragment {
 
     /**
      * 显示指定的视图
@@ -30,8 +30,4 @@ public class FragmentHome extends Fragment implements OnClickListenner{
         return inflater.inflate(R.layout.flagment_home,container,false);
     }
 
-    @Override
-    public void onClick(){
-
-    }
 }
