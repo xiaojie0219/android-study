@@ -6,7 +6,7 @@ package com.example.administrator.myapplication.data;
 public class User {
     private String userName;
     private String passWd;
-    protected User(String userName, String passWd){
+    public User(String userName, String passWd){
         this.userName = userName;
         this.passWd = passWd;
     }

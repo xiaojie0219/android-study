@@ -1,39 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/child"
-    android:id="@+id/rLayout">
-    <TableLayout
-        android:id="@+id/tLayout"
-        android:layout_width="match_parent"
+    android:padding="5dp">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
-        <TableRow>
-            <fragment
-                android:id="@+id/fragment_home"
-                android:name="com.example.administrator.myapplication.Fragment.FragmentHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                tools:layout="@layout/flagment_home" />
-            <fragment
-                android:id="@+id/fragment_setting"
-                android:name="com.example.administrator.myapplication.Fragment.FragmentSetting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                tools:layout="@layout/flagment_setting" />
-            <fragment
-                android:id="@+id/fragment_user"
-                android:name="com.example.administrator.myapplication.Fragment.FragmentUser"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                tools:layout="@layout/flagment_user" />
-        </TableRow>
-    </TableLayout>
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/sam"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/text1"
+        android:text="@string/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:layout_alignLeft="@id/imageView"
+        android:layout_marginBottom="40dp"/>
+    <EditText android:id="@+id/etext1"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/text1"
+        android:layout_alignTop="@id/text1"/>
 
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:layout_below="@id/text1"
+        android:layout_alignLeft="@id/imageView"
+        android:layout_alignRight="@id/text1"
+        android:text="@string/pass_word"
+        android:layout_marginBottom="40dp"/>
+    <EditText
+        android:id="@+id/etext2"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:layout_toRightOf="@id/text2"
+        android:layout_alignTop="@id/text2"
+        android:password="true"/>
 
+    <Button
+        android:id="@+id/button1"
+        android:text="@string/reset_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text2"
+        android:layout_alignLeft="@id/text2" />
+    <Button
+        android:id="@+id/button2"
+        android:text="@string/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/button1"
+        android:layout_alignRight="@id/imageView" />
 </RelativeLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/child"
+    android:id="@+id/rLayout">
+    <TableLayout
+        android:id="@+id/tLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+        <TableRow>
+            <fragment
+                android:id="@+id/fragment_home"
+                android:name="com.example.administrator.myapplication.Fragment.FragmentHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:layout="@layout/flagment_home" />
+            <fragment
+                android:id="@+id/fragment_setting"
+                android:name="com.example.administrator.myapplication.Fragment.FragmentSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:layout="@layout/flagment_setting" />
+            <fragment
+                android:id="@+id/fragment_user"
+                android:name="com.example.administrator.myapplication.Fragment.FragmentUser"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                tools:layout="@layout/flagment_user" />
+        </TableRow>
+    </TableLayout>
+
+
+</RelativeLayout>
