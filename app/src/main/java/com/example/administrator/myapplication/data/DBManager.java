@@ -21,6 +21,7 @@ public class DBManager {
         //因为getWritableDatabase内部调用了mContext.openOrCreateDatabase(mName, 0, mFactory);
         //所以要确保context已初始化,我们可以把实例化DBManager的步骤放在Activity的onCreate里
         db = helper.getWritableDatabase();
+        helper.onCreate(db);
         userList.add(user);
         addUser(userList);
     }
@@ -30,7 +31,7 @@ public class DBManager {
         db.beginTransaction();
         try{
             for (User user:users) {
-                db.execSQL("INSERT INTO user VALUES(?,?)",new Object[]{user.getUserName(),user.getPassWd()});
+                db.execSQL("INSERT INTO user_base_infor VALUES(null,?,?)",new Object[]{user.getUserName(),user.getPassWd()});
             }
             //设置事务成功完成
             db.setTransactionSuccessful();

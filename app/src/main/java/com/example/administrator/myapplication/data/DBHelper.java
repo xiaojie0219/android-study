@@ -21,14 +21,13 @@ public class DBHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase){
-        String createTable = ( "CREATE TABLE IF NOT EXISTS TABLE_NAME"  +
-                 "( KEY_ID integer primary key autoincrement KEY_NAME text not null KEY_PASSWD text not null)");
+        String createTable = "CREATE TABLE IF NOT EXISTS " +  TABLE_NAME + " ( " + KEY_ID + " integer primary key AUTOINCREMENT, " +  KEY_NAME + " text not null, " + KEY_PASSWD + " text not null );";
         sqLiteDatabase.execSQL(createTable);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion ,int newVersion){
-        sqLiteDatabase.execSQL("DROP TABLE IF exists TABLE_NAME");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 

@@ -2,6 +2,7 @@ package com.example.administrator.myapplication.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,12 +20,16 @@ import com.example.administrator.myapplication.data.DBManager;
  */
 public class MainActivity extends Activity{
     private DBManager dbManager;
+    private MediaPlayer backGroundMusic ;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        backGroundMusic = MediaPlayer.create(this,R.raw.oxygen);
+        backGroundMusic.start();
         //初始化DBManager
         dbManager = new DBManager(this);
 
@@ -73,5 +78,7 @@ public class MainActivity extends Activity{
         super.onDestroy();
         //应用的最后一个Activity关闭时应释放DB
         dbManager.closeDB();
+        backGroundMusic.stop();
+        finish();
     }
 }
