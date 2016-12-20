@@ -36,6 +36,7 @@ public class MainActivity extends Activity{
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.layout);
         Button button1 = (Button)findViewById(R.id.button1);
         Button button2 = (Button)findViewById(R.id.button2);
+        Button button3 = (Button)findViewById(R.id.button3);
 
         final EditText eText1 = (EditText)findViewById(R.id.etext1);
         final EditText eText2 = (EditText)findViewById(R.id.etext2);
@@ -68,6 +69,15 @@ public class MainActivity extends Activity{
                     startActivity(intent);
 //                    finish();
                 }
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,RegisterActivity.class);
+                startActivity(intent);
             }
         });
 
