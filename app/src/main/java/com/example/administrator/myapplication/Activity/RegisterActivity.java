@@ -53,6 +53,9 @@ public class RegisterActivity extends Activity{
                     dbManager.addUser(user);
                     Toast.makeText(getApplicationContext(), "注册成功",
                             Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    intent.setClass(RegisterActivity.this,MainActivity.class);
+                    startActivity(intent);
 
             }
         }});

@@ -1,6 +1,7 @@
 package com.example.administrator.myapplication.Activity;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import com.example.administrator.myapplication.R;
@@ -9,7 +10,7 @@ import com.example.administrator.myapplication.R;
  * Created by jay on 2016/11/17.
  */
 public class UserActivity extends Activity {
-
+    private MediaPlayer backGroundMusic ;
 
     /*
     private Menu menu = null;
@@ -22,6 +23,8 @@ public class UserActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_main);
+        backGroundMusic = MediaPlayer.create(this, R.raw.oxygen);
+        backGroundMusic.start();
 
 
 /*
@@ -44,7 +47,12 @@ public class UserActivity extends Activity {
         return true;
     }
     */
-
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        backGroundMusic.stop();
+        finish();
+    }
 
 
 }

@@ -2,6 +2,7 @@ package com.example.administrator.myapplication.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
@@ -37,6 +38,22 @@ public class DBManager {
             //结束事务
             db.endTransaction();
         }
+    }
+    public List<User> queryUser(){
+        List<User> userList = new ArrayList<User>();
+        Cursor cursor = queryTheCursor();
+        while (cursor.moveToNext()){
+            User user = new User();
+            user.setUserName(cursor.getString(cursor.getColumnIndex("userName")));
+            user.setPassWd(cursor.getString(cursor.getColumnIndex("passWd")));
+            userList.add(user);
+        }
+        cursor.close();
+        return userList;
+    }
+    public Cursor queryTheCursor(){
+        Cursor cursor = db.rawQuery("SELECT * FROM user_base_infor",null);
+        return  cursor;
     }
     public void closeDB(){
         db.close();

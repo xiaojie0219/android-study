@@ -2,7 +2,6 @@ package com.example.administrator.myapplication.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,6 +12,9 @@ import android.widget.Toast;
 
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.data.DBManager;
+import com.example.administrator.myapplication.data.User;
+
+import java.util.List;
 
 
 /**
@@ -20,7 +22,7 @@ import com.example.administrator.myapplication.data.DBManager;
  */
 public class MainActivity extends Activity{
     private DBManager dbManager;
-    private MediaPlayer backGroundMusic ;
+
 
 
 
@@ -28,8 +30,7 @@ public class MainActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        backGroundMusic = MediaPlayer.create(this,R.raw.oxygen);
-        backGroundMusic.start();
+
         //初始化DBManager
         dbManager = new DBManager(this);
 
@@ -61,13 +62,16 @@ public class MainActivity extends Activity{
                 else if(TextUtils.isEmpty(eText2.getEditableText()) ){
                     Toast.makeText(getApplicationContext(), "密码不能为空",
                             Toast.LENGTH_SHORT).show();
-                }else {
+                }else if (verifyUser(eText1.getText().toString(),eText2.getText().toString())){
                     Toast.makeText(getApplicationContext(), "登录成功",
                             Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
-                    intent.setClass(MainActivity.this,UserActivity.class);
+                    intent.setClass(MainActivity.this, UserActivity.class);
                     startActivity(intent);
 //                    finish();
+                }else {
+                    Toast.makeText(getApplicationContext(), "用户名或密码错误，请重新登录",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -88,7 +92,16 @@ public class MainActivity extends Activity{
         super.onDestroy();
         //应用的最后一个Activity关闭时应释放DB
         dbManager.closeDB();
-        backGroundMusic.stop();
         finish();
+    }
+
+    public Boolean verifyUser(String userName,String passWd){
+        List<User> userList = dbManager.queryUser();
+        for (User user : userList){
+            if( userName.equals(user.getUserName()) && passWd.equals(user.getPassWd())){
+                return true;
+            }
+        }
+        return false;
     }
 }
