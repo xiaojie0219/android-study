@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
 
@@ -13,7 +14,22 @@ import com.example.administrator.myapplication.R;
  * Created by jay on 2016/11/18.
  */
 public class HomeFragment extends Fragment {
+    public static final String ARG_PAGE = "ARG_PAGE";
+    private int mPage;
 
+    public static HomeFragment newInstance(int page){
+        Bundle bundle = new Bundle();
+        bundle.putInt(ARG_PAGE,page);
+        HomeFragment homeFragment = new HomeFragment();
+        homeFragment.setArguments(bundle);
+        return homeFragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        mPage = getArguments().getInt(ARG_PAGE);
+    }
     /**
      * 显示指定的视图
      * @inflater     resource ID，指明了当前的Fragment对应的资源文件
@@ -27,7 +43,10 @@ public class HomeFragment extends Fragment {
      */
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState){
-        return inflater.inflate(R.layout.fragment_home,container,false);
+        View view = inflater.inflate(R.layout.fragment_home,container,false);
+        TextView textView = (TextView)view;
+        textView.setText("Fragment # " + mPage);
+        return view;
     }
 
 }

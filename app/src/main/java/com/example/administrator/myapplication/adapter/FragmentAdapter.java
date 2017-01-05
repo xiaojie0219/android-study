@@ -31,6 +31,7 @@ public class FragmentAdapter extends FragmentPagerAdapter{
 
     /**
      * 此方法是给tablayout中的tab赋值的，就是显示名称
+     * ViewPager与TabLayout绑定后，这里获取到PageTitle就是Tab的Text
      * @param position
      * @return
      */
